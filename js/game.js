@@ -46,10 +46,10 @@ Game.prototype.start = function() {
 //   }
 // }
 
-// Game.prototype.clearCanvas = function () {
-//   var self = this;
-//   self.ctx.clearRect(0, 0, self.size.width, self.size.height);
-// }
+Game.prototype.clearCanvas = function() {
+  var self = this;
+  self.ctx.clearRect(0, 0, self.size.width, self.size.height);
+};
 
 Game.prototype.draw = function() {
   var self = this;
@@ -66,15 +66,15 @@ Game.prototype.doFrame = function() {
   var self = this; //change everything to self in the methods
   // self.checkIfEnded();
   // self.checkCollisions();
-  // self.clearCanvas();
-  // self.update();
+  self.clearCanvas();
+  //self.update();
   self.draw();
-  // window.requestAnimationFrame(function(){
-  //   if(!self.isEnded){
-  //     self.doFrame();
-  //   }
-  // else if (self.isEnded) {
-  //   self.callback();
-  //   // }
-  // })
+  window.requestAnimationFrame(function() {
+    //   if(!self.isEnded){
+    self.doFrame();
+    //   }
+    // else if (self.isEnded) {
+    //   self.callback();
+    //   // }
+  });
 };

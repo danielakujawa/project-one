@@ -3,9 +3,10 @@
 function Player(ctx) {
   this.ctx = ctx;
   this.position = {
-    x: 200,
+    x: 30,
     y: 20
   };
+
   this.size = {
     width: 20,
     height: 20
@@ -23,6 +24,7 @@ Player.prototype.draw = function() {
     self.size.width,
     self.size.height
   );
+  console.log("drawn");
 };
 
 // Player.prototype.drawLives = function() {

@@ -44,13 +44,25 @@ function main() {
     playGame();
   }
 
+  function handleKeyUp(event) {
+    var self = this;
+    console.log(event);
+    if (event.key === "ArrowUp") {
+      game.player.moveUp();
+      debugger;
+    } else if (event.key === "ArrowDown") {
+      game.player.moveDown();
+      debugger;
+    }
+  }
+
   function playGame() {
     var canvasCtx = canvas.getContext("2d");
     game = new Game(canvasCtx, canvas, destroyGame);
-    //window.addEventListener("keyup", handleKeyUp);
+    window.addEventListener("keyup", handleKeyUp);
     var gameTest = setTimeout(function() {
       destroyGame();
-    }, 3000);
+    }, 20000);
   }
 
   function destroyGame() {
