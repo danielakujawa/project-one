@@ -24,7 +24,6 @@ Player.prototype.draw = function() {
     self.size.width,
     self.size.height
   );
-  console.log("drawn");
 };
 
 // Player.prototype.drawLives = function() {

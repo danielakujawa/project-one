@@ -17,8 +17,8 @@ body {
 /* ---- canvas ---- */
 
 #canvas {
-  width: 500px;
-  height: 300px;
+  width: 900px;
+  height: 500px;
   border: 2px solid rgb(52, 52, 161);
 }
 
@@ -26,4 +26,28 @@ body {
   display: flex;
   justify-content: center;
   padding-top: 30px;
+}
+
+.game-name {
+  color: red;
+  font-size: 60px;
+  text-align: center;
+}
+
+.startgame {
+  display: flex;
+}
+.startbutton {
+  align-self: center;
+}
+.button {
+  color: #fff;
+  font-size: 1em;
+  padding: 15px;
+  border-radius: 6px;
+  width: 30%;
+  text-align: center;
+  display: inline-block;
+  text-transform: uppercase;
+  background-color: rgba(26, 26, 141, 0.822);
 }

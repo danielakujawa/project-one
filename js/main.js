@@ -18,13 +18,17 @@ function main() {
   function buildSplashScreen() {
     container = document.getElementById("game-container");
     splashScreen = createHtml(`<div id="intro">
-        <h1>Game Name</h1>
-        <img src="../images/welcome.png"/>
-        <div class ="button-div"><button>Start Game</button></div>
-        <div id="instructions">
+      <h1 class="game-name">GuacaGame</h1>
+      <div class="startgame">
+        <img class="guaca" src="../images/welcome.png"/>
+        <div class="startbutton">
+          <button class="button">Start Game</button>
           <p>Move the Guacamaya up and down to avoid the cages.</p>
           <p>If you get caught 3 times, you lose</p>
         </div>
+      </div>
+    </div>
+        
       </div>`);
 
     container.appendChild(splashScreen);
@@ -49,10 +53,8 @@ function main() {
     console.log(event);
     if (event.key === "ArrowUp") {
       game.player.moveUp();
-      debugger;
     } else if (event.key === "ArrowDown") {
       game.player.moveDown();
-      debugger;
     }
   }
 
@@ -62,7 +64,7 @@ function main() {
     window.addEventListener("keyup", handleKeyUp);
     var gameTest = setTimeout(function() {
       destroyGame();
-    }, 20000);
+    }, 5000);
   }
 
   function destroyGame() {
@@ -74,7 +76,7 @@ function main() {
     gameOverScreen = createHtml(`<div id="game-over">
         <h1>Game Over</h1>
         <img src="../images/lost.png"/>
-        <div class ="button-div"><button>Restart</button></div>
+        <div class ="button-div"><button class="button">Restart</button></div>
       </div>`);
 
     container.appendChild(gameOverScreen);

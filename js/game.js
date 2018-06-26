@@ -7,7 +7,7 @@ function Game(ctx, canvas, cb) {
     height: canvas.height
   };
   this.player = null;
-  this.elements = null;
+  this.elements = [];
   this.callback = cb;
   this.isEnded = false;
   this.start();
@@ -16,9 +16,22 @@ function Game(ctx, canvas, cb) {
 Game.prototype.start = function() {
   var self = this;
   self.player = new Player(self.ctx);
-  //self.ball = new Ball(self.ctx, self.size);
+  //createElements();
+  self.elements = new Elements(self.ctx, self.size);
+
+  // setInterval(function() {
+  //   var x = new Elements(self.ctx, self.size);
+  //   self.elements.push(x);
+  // }, 2000);
+
   self.doFrame();
 };
+
+// function createElements() {
+//   for (var i = 0; i < 10; i++) {
+//     self.elements.push(new Elements(self.ctx, self.size));
+//   }
+// }
 
 // Game.prototype.checkIfEnded = function () {
 //   var self = this;
@@ -54,20 +67,20 @@ Game.prototype.clearCanvas = function() {
 Game.prototype.draw = function() {
   var self = this;
   self.player.draw();
-  // self.ball.draw();
+  self.elements.draw();
 };
 
-// Game.prototype.update = function () {
-//   var self = this;
-//   self.ball.move();
-// }
+Game.prototype.update = function() {
+  var self = this;
+  self.elements.move();
+};
 
 Game.prototype.doFrame = function() {
   var self = this; //change everything to self in the methods
   // self.checkIfEnded();
   // self.checkCollisions();
   self.clearCanvas();
-  //self.update();
+  self.update();
   self.draw();
   window.requestAnimationFrame(function() {
     //   if(!self.isEnded){
