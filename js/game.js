@@ -16,22 +16,19 @@ function Game(ctx, canvas, cb) {
 Game.prototype.start = function() {
   var self = this;
   self.player = new Player(self.ctx);
-  //createElements();
-  self.elements = new Elements(self.ctx, self.size);
 
-  // setInterval(function() {
-  //   var x = new Elements(self.ctx, self.size);
-  //   self.elements.push(x);
-  // }, 2000);
+  self.createElement();
 
   self.doFrame();
 };
 
-// function createElements() {
-//   for (var i = 0; i < 10; i++) {
-//     self.elements.push(new Elements(self.ctx, self.size));
-//   }
-// }
+Game.prototype.createElement = function() {
+  for (var ix = 0; ix < 6; ix++) {
+    var self = this;
+    var newElement = new Element(self.ctx, self.size, self.position);
+    self.elements.push(newElement);
+  }
+};
 
 // Game.prototype.checkIfEnded = function () {
 //   var self = this;
@@ -67,18 +64,32 @@ Game.prototype.clearCanvas = function() {
 Game.prototype.draw = function() {
   var self = this;
   self.player.draw();
-  self.elements.draw();
+  self.elements.forEach(function(element) {
+    element.draw();
+  });
 };
 
 Game.prototype.update = function() {
   var self = this;
-  self.elements.move();
+  self.elements.forEach(function(element) {
+    element.move();
+  });
+};
+
+Game.prototype.checkElementsOffScreen = function() {
+  var self = this;
+  self.elements.forEach(function(element) {
+    if (element.position.x < -60) {
+      element.position.x = 960;
+    }
+  });
 };
 
 Game.prototype.doFrame = function() {
   var self = this; //change everything to self in the methods
   // self.checkIfEnded();
   // self.checkCollisions();
+  self.checkElementsOffScreen();
   self.clearCanvas();
   self.update();
   self.draw();

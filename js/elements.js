@@ -1,21 +1,21 @@
 "use strict";
 
-function Elements(ctx, size) {
+function Element(ctx, size) {
   this.ctx = ctx;
   this.position = {
-    x: 200,
-    y: 20 //random
+    x: 960,
+    y: Math.floor(Math.random() * 500) //random
   };
   this.size = {
-    width: 20,
-    height: 20
+    width: 60,
+    height: 60
   };
   this.speed = {
-    x: -2
+    x: -10
   };
 }
 
-Elements.prototype.draw = function() {
+Element.prototype.draw = function() {
   var self = this;
   self.ctx.fillStyle = "black";
   self.ctx.fillRect(
@@ -26,7 +26,7 @@ Elements.prototype.draw = function() {
   );
 };
 
-Elements.prototype.move = function() {
+Element.prototype.move = function() {
   var self = this;
   self.position.x += self.speed.x;
 };

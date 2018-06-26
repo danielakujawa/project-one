@@ -8,11 +8,11 @@ function Player(ctx) {
   };
 
   this.size = {
-    width: 20,
-    height: 20
+    width: 60,
+    height: 60
   };
   this.lives = 3;
-  this.speed = 15; //it will move 15px every frame
+  this.speed = 60; //it will move 15px every frame
 }
 
 Player.prototype.draw = function() {

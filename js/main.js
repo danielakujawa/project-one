@@ -14,6 +14,10 @@ function main() {
   var canvas;
   var container;
   var game = null;
+  var canvasSize = {
+    width: 900,
+    height: 500
+  };
 
   function buildSplashScreen() {
     container = document.getElementById("game-container");
@@ -44,6 +48,8 @@ function main() {
   function buildGame() {
     canvas = document.createElement("canvas");
     canvas.setAttribute("id", "canvas");
+    canvas.setAttribute("width", canvasSize.width + "px");
+    canvas.setAttribute("height", canvasSize.height + "px");
     container.appendChild(canvas);
     playGame();
   }
@@ -64,7 +70,7 @@ function main() {
     window.addEventListener("keyup", handleKeyUp);
     var gameTest = setTimeout(function() {
       destroyGame();
-    }, 5000);
+    }, 30000);
   }
 
   function destroyGame() {
