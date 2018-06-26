@@ -56,7 +56,7 @@ function main() {
 
   function handleKeyUp(event) {
     var self = this;
-    console.log(event);
+    //console.log(event);
     if (event.key === "ArrowUp") {
       game.player.moveUp();
     } else if (event.key === "ArrowDown") {

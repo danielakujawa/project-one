@@ -4,18 +4,18 @@ function Element(ctx, size) {
   this.ctx = ctx;
   this.position = {
     x: 960,
-    y: Math.floor(Math.random() * 500) //random
+    y: Math.floor(Math.random() * 440) //random
   };
   this.size = {
     width: 60,
     height: 60
   };
   this.speed = {
-    x: -10
+    x: getRandomArbitrary(-2, -5)
   };
 }
 
-Element.prototype.draw = function() {
+Element.prototype.draw = function () {
   var self = this;
   self.ctx.fillStyle = "black";
   self.ctx.fillRect(
@@ -26,7 +26,13 @@ Element.prototype.draw = function() {
   );
 };
 
-Element.prototype.move = function() {
+Element.prototype.move = function () {
   var self = this;
   self.position.x += self.speed.x;
 };
+
+// Helper Function
+
+function getRandomArbitrary(min, max) {
+  return Math.random() * (max - min) + min;
+}
