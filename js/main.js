@@ -59,7 +59,7 @@ function main() {
 
   function handleKeyUp(event) {
     var self = this;
-    //console.log(event);
+
     if (event.key === "ArrowUp") {
       game.player.moveUp();
     } else if (event.key === "ArrowDown") {
@@ -77,12 +77,10 @@ function main() {
     var canvasCtx = canvas.getContext("2d");
     game = new Game(canvasCtx, canvas, destroyGame);
     window.addEventListener("keyup", handleKeyUp);
-    var gameTest = setTimeout(function () {
-      destroyGame();
-    }, 30000);
   }
 
   function destroyGame() {
+    game = null;
     canvas.remove();
     buildGameOver();
   }

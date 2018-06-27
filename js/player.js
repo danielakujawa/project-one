@@ -12,7 +12,7 @@ function Player(ctx) {
     height: 60
   };
   this.lives = 3;
-  this.speed = 60; //it will move 15px every frame
+  this.speed = 60;
 }
 
 Player.prototype.draw = function () {

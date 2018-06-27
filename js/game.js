@@ -18,8 +18,6 @@ Game.prototype.start = function () {
   var self = this;
   self.player = new Player(self.ctx);
 
-  // self.createElement();
-
   self.doFrame();
 };
 
@@ -28,39 +26,83 @@ Game.prototype.createElement = function () {
   if (self.elements.length < 5) {
     var newElement = new Element(self.ctx, self.size, self.position);
     self.elements.push(newElement);
-    console.log(self.elements.length);
   }
 };
 
-// Game.prototype.checkIfEnded = function () {
-//   var self = this;
-//   if (self.player.lives <= 0) {
-//     this.isEnded = true;
-//     this.callback();
-//   }
-// }
+Game.prototype.checkIfEnded = function () {
+  var self = this;
+  if (self.player.lives <= 0) {
+    this.isEnded = true;
+  }
+  if (self.counter === 3600) {
+    this.isEnded = true;
+  }
+}
 
 Game.prototype.checkCollisions = function () {
   var self = this;
+
+  let playerLeft = self.player.position.x;
+  let playerRight = self.player.position.x + self.player.size.width;
+  let playerTop = self.player.position.y;
+  let playerBottom = self.player.position.y + self.player.size.height;
+
+
+
+  this.elements.forEach(function (element, index) {
+    var elementLeft = element.position.x;
+    var elementRight = element.position.x + element.size.width;
+    var elementTop = element.position.y;
+    var elementBottom = element.position.y + element.size.height;
+
+    if (elementLeft <= playerRight && playerRight <= elementRight) {
+
+      if (elementTop <= playerBottom && playerBottom <= elementBottom) {
+
+        self.player.lives -= 1;
+        console.log(self.player.lives);
+        self.elements.splice(index, 1);
+
+      } else if (elementTop <= playerTop && playerTop <= elementBottom) {
+
+        self.player.lives -= 1;
+        self.elements.splice(index, 1);
+        console.log(self.player.lives);
+      }
+
+    } else if (elementLeft <= playerLeft && playerLeft <= elementRight) {
+
+      if (elementTop <= playerBottom && playerBottom <= elementBottom) {
+
+        self.player.lives -= 1;
+        self.elements.splice(index, 1);
+        console.log(self.player.lives);
+
+      } else if (elementTop <= playerTop && playerTop <= elementBottom) {
+
+        self.player.lives -= 1;
+        self.elements.splice(index, 1);
+        console.log(self.player.lives);
+      }
+    }
+
+
+
+  })
+
 
   if (self.player.position.y <= 0) {
     self.player.position.y += 4;
   }
   else if (self.player.position.y + self.player.size.height >= self.size.height) {
     self.player.position.y -= 4;
+  } else if (self.player.position.x <= 0) {
+    self.player.position.x += 4;
+  } else if (self.player.position.x + self.player.size.height >= self.size.width) {
+    self.player.position.x -= 4;
   }
 }
 
-
-//   else if (self.ball.position.x <= 0 ) {
-//     self.player.lives --;
-//     self.ball.speed.x = -self.ball.speed.x
-//     self.ball = new Ball(self.ctx, self.size);
-//   }
-//   else if (self.ball.position.x + self.ball.size.width >= self.size.width) {
-//     self.ball.speed.x = -self.ball.speed.x
-//   }
-// }
 
 Game.prototype.clearCanvas = function () {
   var self = this;
@@ -96,7 +138,7 @@ Game.prototype.checkElementsOffScreen = function () {
 Game.prototype.doFrame = function () {
   var self = this; //change everything to self in the methods
   self.counter++;
-  // self.checkIfEnded();
+  self.checkIfEnded();
   self.checkCollisions();
   self.checkElementsOffScreen();
   self.clearCanvas();
@@ -114,11 +156,12 @@ Game.prototype.doFrame = function () {
   });
 
   window.requestAnimationFrame(function () {
-    //   if(!self.isEnded){
-    self.doFrame();
-    //   }
-    // else if (self.isEnded) {
-    //   self.callback();
-    //   // }
+    if (!self.isEnded) {
+      self.doFrame();
+    }
+    else if (self.isEnded) {
+
+      self.callback();
+    }
   });
 };
