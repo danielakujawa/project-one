@@ -15,8 +15,12 @@ function Player(ctx) {
   this.speed = 60; //it will move 15px every frame
 }
 
-Player.prototype.draw = function() {
+Player.prototype.draw = function () {
   var self = this;
+  // var img = new Image();
+  // img.src = '../images/fly.gif';
+  // img.onload = function () {
+  //   self.ctx.drawImage(img, 20, 20);
   self.ctx.fillStyle = "red";
   self.ctx.fillRect(
     self.position.x,
@@ -33,12 +37,22 @@ Player.prototype.draw = function() {
 //   self.ctx.fillText(self.lives, 10, 10);
 // };
 
-Player.prototype.moveUp = function() {
+Player.prototype.moveUp = function () {
   var self = this;
   self.position.y -= self.speed;
 };
 
-Player.prototype.moveDown = function() {
+Player.prototype.moveDown = function () {
   var self = this;
   self.position.y += self.speed;
+};
+
+Player.prototype.moveRight = function () {
+  var self = this;
+  self.position.x += self.speed;
+};
+
+Player.prototype.moveLeft = function () {
+  var self = this;
+  self.position.x -= self.speed;
 };

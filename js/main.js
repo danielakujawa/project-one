@@ -54,6 +54,9 @@ function main() {
     playGame();
   }
 
+
+  //----- @todo---This should be in game.js
+
   function handleKeyUp(event) {
     var self = this;
     //console.log(event);
@@ -62,13 +65,19 @@ function main() {
     } else if (event.key === "ArrowDown") {
       game.player.moveDown();
     }
+    else if (event.key === "ArrowRight") {
+      game.player.moveRight();
+    }
+    else if (event.key === "ArrowLeft") {
+      game.player.moveLeft();
+    }
   }
 
   function playGame() {
     var canvasCtx = canvas.getContext("2d");
     game = new Game(canvasCtx, canvas, destroyGame);
     window.addEventListener("keyup", handleKeyUp);
-    var gameTest = setTimeout(function() {
+    var gameTest = setTimeout(function () {
       destroyGame();
     }, 30000);
   }
