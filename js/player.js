@@ -13,29 +13,30 @@ function Player(ctx) {
   };
   this.lives = 3;
   this.speed = 60;
+
+  this.image = new Image();
+  this.image.src = "../images/parrot-fly-wing-up.png";
 }
 
 Player.prototype.draw = function () {
   var self = this;
-  // var img = new Image();
-  // img.src = '../images/fly.gif';
-  // img.onload = function () {
-  //   self.ctx.drawImage(img, 20, 20);
-  self.ctx.fillStyle = "red";
-  self.ctx.fillRect(
-    self.position.x,
-    self.position.y,
-    self.size.width,
-    self.size.height
-  );
+  self.ctx.drawImage(self.image, self.position.x, self.position.y, self.size.width, self.size.height)
+
+  // self.ctx.fillStyle = "red";
+  // self.ctx.fillRect(
+  //   self.position.x,
+  //   self.position.y,
+  //   self.size.width,
+  //   self.size.height
+  // );
 };
 
-// Player.prototype.drawLives = function() {
-//   var self = this;
-//   self.ctx.fillStyle = "blue";
-//   self.ctx.font = "30px Verdana";
-//   self.ctx.fillText(self.lives, 10, 10);
-// };
+Player.prototype.drawLives = function () {
+  var self = this;
+  self.ctx.fillStyle = "blue";
+  self.ctx.font = "30px Verdana";
+  self.ctx.fillText(self.lives, 10, 10);
+};
 
 Player.prototype.moveUp = function () {
   var self = this;

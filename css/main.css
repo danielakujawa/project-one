@@ -20,6 +20,8 @@ body {
   width: 900px;
   height: 500px;
   border: 2px solid rgb(52, 52, 161);
+  background-image: url(../images/background.png);
+  background-size: 100% 100%;
 }
 
 #game-container {
@@ -28,26 +30,56 @@ body {
   padding-top: 30px;
 }
 
-.game-name {
+#intro, #game-over{
+  background-image: url(../images/background_incio.png);
+  background-size: 100% 100%;
+  width: 900px;
+  height: 500px;
+} 
+
+#intro h1, #game-over h1{
+  margin: 0;
+  padding-top: 40px;
+}
+
+.main-title {
   color: red;
   font-size: 60px;
   text-align: center;
 }
 
-.startgame {
+.start-over-game {
   display: flex;
+  justify-content: space-around;
 }
-.startbutton {
-  align-self: center;
-}
+
 .button {
   color: #fff;
   font-size: 1em;
   padding: 15px;
   border-radius: 6px;
-  width: 30%;
+  width: 50%;
   text-align: center;
   display: inline-block;
   text-transform: uppercase;
   background-color: rgba(26, 26, 141, 0.822);
+}
+
+.guaca {
+width: 80%;
+padding-left: 100px;
+}
+
+.guaca-over{
+  width: 80%;
+  padding-left: 150px;
+}
+
+.contenido {
+  width: 50%;
+  align-self: center;
+}
+
+.instructions {
+  display: none;
 }

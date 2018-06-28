@@ -22,13 +22,17 @@ function main() {
   function buildSplashScreen() {
     container = document.getElementById("game-container");
     splashScreen = createHtml(`<div id="intro">
-      <h1 class="game-name">GuacaGame</h1>
-      <div class="startgame">
-        <img class="guaca" src="../images/welcome.png"/>
-        <div class="startbutton">
+      <h1 class="main-title">GuacaGame</h1>
+      <div class="start-over-game">
+        <div class="contenido"><img class="guaca" src="../images/welcome.png"/></div>
+        <div class= "contenido">
           <button class="button">Start Game</button>
-          <p>Move the Guacamaya up and down to avoid the cages.</p>
-          <p>If you get caught 3 times, you lose</p>
+          <p><a href="">Instrucciones</a></p>
+          <ul class="instructions">
+          <li>Move Linda up, down, right or left with the arrow keys!</li>
+          <li>Cages move fast, avoid them! If you get caught 3 times, you will end up in someone's house.</li>
+          <li>Mangos are so delicious, eat them! The more you eat within one minute, the better score you get.</li>
+          </ul>
         </div>
       </div>
     </div>
@@ -87,9 +91,13 @@ function main() {
 
   function buildGameOver() {
     gameOverScreen = createHtml(`<div id="game-over">
-        <h1>Game Over</h1>
-        <img src="../images/lost.png"/>
-        <div class ="button-div"><button class="button">Restart</button></div>
+        <h1 class="main-title">Game Over</h1>
+        <div class="start-over-game">
+        <div class="contenido"><img class="guaca-over" src="../images/lost.png"/></div>
+        <div class ="contenido">
+        <button class="button">Restart</button>
+        </div>
+        </div>
       </div>`);
 
     container.appendChild(gameOverScreen);

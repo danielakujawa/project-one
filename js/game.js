@@ -24,17 +24,26 @@ Game.prototype.start = function () {
 Game.prototype.createElement = function () {
   var self = this;
   if (self.elements.length < 5) {
-    var newElement = new Element(self.ctx, self.size, self.position);
+    debugger;
+    var newElement = new Element(self.ctx, self.size, self.position, self.createTypes());
     self.elements.push(newElement);
   }
 };
+
+Game.prototype.createTypes = function () {
+  var self = this;
+  var types = ["cage", "mango"]
+
+  var random = types[Math.floor(Math.random() * 2)];
+  console.log(random);
+  return random;
+}
 
 Game.prototype.checkIfEnded = function () {
   var self = this;
   if (self.player.lives <= 0) {
     this.isEnded = true;
-  }
-  if (self.counter === 3600) {
+  } else if (self.counter === 3600) {
     this.isEnded = true;
   }
 }
@@ -59,36 +68,48 @@ Game.prototype.checkCollisions = function () {
 
       if (elementTop <= playerBottom && playerBottom <= elementBottom) {
 
-        self.player.lives -= 1;
-        console.log(self.player.lives);
         self.elements.splice(index, 1);
+        if (element.type === "cage") {
+          self.player.lives -= 1;
+        } else {
+          console.log("+10");
+        }
 
       } else if (elementTop <= playerTop && playerTop <= elementBottom) {
 
-        self.player.lives -= 1;
         self.elements.splice(index, 1);
-        console.log(self.player.lives);
+        if (element.type === "cage") {
+          self.player.lives -= 1;
+        } else {
+          console.log("+10");
+        }
       }
 
     } else if (elementLeft <= playerLeft && playerLeft <= elementRight) {
 
       if (elementTop <= playerBottom && playerBottom <= elementBottom) {
 
-        self.player.lives -= 1;
         self.elements.splice(index, 1);
-        console.log(self.player.lives);
+        if (element.type === "cage") {
+          self.player.lives -= 1;
+        } else {
+          console.log("+10");
+        }
 
       } else if (elementTop <= playerTop && playerTop <= elementBottom) {
 
-        self.player.lives -= 1;
         self.elements.splice(index, 1);
-        console.log(self.player.lives);
+        if (element.type === "cage") {
+          self.player.lives -= 1;
+        } else {
+          console.log("+10");
+        }
+
       }
     }
 
-
-
   })
+
 
 
   if (self.player.position.y <= 0) {
@@ -145,9 +166,9 @@ Game.prototype.doFrame = function () {
   self.update();
   self.draw();
 
-  if (self.counter === 100) {
+  if (self.counter % 100 === 0) {
     self.createElement();
-    self.counter = 0;
+
   }
 
   self.elements.forEach(function (item) {
