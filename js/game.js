@@ -11,6 +11,8 @@ function Game(ctx, canvas, cb) {
   this.callback = cb;
   this.isEnded = false;
   this.counter = 0;
+  this.score = 0;
+  this.lost = null;
   this.start();
 }
 
@@ -23,7 +25,7 @@ Game.prototype.start = function () {
 
 Game.prototype.createElement = function () {
   var self = this;
-  if (self.elements.length < 5) {
+  if (self.elements.length < 10) {
 
     var newElement = new Element(self.ctx, self.size, self.createTypes());
     self.elements.push(newElement);
@@ -39,9 +41,11 @@ Game.prototype.createTypes = function () {
 Game.prototype.checkIfEnded = function () {
   var self = this;
   if (self.player.lives <= 0) {
-    this.isEnded = true;
+    self.isEnded = true;
+    self.lost = true;
   } else if (self.counter === 3600) {
-    this.isEnded = true;
+    self.isEnded = true;
+    self.lost = false;
   }
 }
 
@@ -69,7 +73,7 @@ Game.prototype.checkCollisions = function () {
         if (element.type === "cage") {
           self.player.lives -= 1;
         } else {
-          console.log("+10");
+          self.score++
         }
 
       } else if (elementTop <= playerTop && playerTop <= elementBottom) {
@@ -78,7 +82,7 @@ Game.prototype.checkCollisions = function () {
         if (element.type === "cage") {
           self.player.lives -= 1;
         } else {
-          console.log("+10");
+          self.score++
         }
       }
 
@@ -90,7 +94,7 @@ Game.prototype.checkCollisions = function () {
         if (element.type === "cage") {
           self.player.lives -= 1;
         } else {
-          console.log("+10");
+          self.score++
         }
 
       } else if (elementTop <= playerTop && playerTop <= elementBottom) {
@@ -99,15 +103,13 @@ Game.prototype.checkCollisions = function () {
         if (element.type === "cage") {
           self.player.lives -= 1;
         } else {
-          console.log("+10");
+          self.score++
         }
 
       }
     }
 
   })
-
-
 
   if (self.player.position.y <= 0) {
     self.player.position.y += 4;
@@ -130,10 +132,20 @@ Game.prototype.clearCanvas = function () {
 Game.prototype.draw = function () {
   var self = this;
   self.player.draw();
+  self.player.drawLives();
   self.elements.forEach(function (element) {
     element.draw();
   });
+
 };
+
+Game.prototype.drawMangos = function () {
+  var self = this;
+  self.ctx.fillStyle = "darkblue";
+  self.ctx.font = "30px Verdana";
+  self.ctx.fillText("Mangos: " + self.score, 750, 40);
+};
+
 
 Game.prototype.update = function () {
   var self = this;
@@ -162,6 +174,7 @@ Game.prototype.doFrame = function () {
   self.clearCanvas();
   self.update();
   self.draw();
+  self.drawMangos();
 
   if (self.counter % 100 === 0) {
     self.createElement();
@@ -179,7 +192,7 @@ Game.prototype.doFrame = function () {
     }
     else if (self.isEnded) {
 
-      self.callback();
+      self.callback(self.lost);
     }
   });
 };

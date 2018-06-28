@@ -4,7 +4,7 @@ function Player(ctx) {
   this.ctx = ctx;
   this.position = {
     x: 30,
-    y: 20
+    y: 60
   };
 
   this.size = {
@@ -33,9 +33,9 @@ Player.prototype.draw = function () {
 
 Player.prototype.drawLives = function () {
   var self = this;
-  self.ctx.fillStyle = "blue";
+  self.ctx.fillStyle = "darkblue";
   self.ctx.font = "30px Verdana";
-  self.ctx.fillText(self.lives, 10, 10);
+  self.ctx.fillText("Lives: " + self.lives, 20, 40);
 };
 
 Player.prototype.moveUp = function () {

@@ -40,6 +40,7 @@ Element.prototype.draw = function () {
   // );
 };
 
+
 Element.prototype.move = function () {
   var self = this;
   self.position.x += self.speed.x;

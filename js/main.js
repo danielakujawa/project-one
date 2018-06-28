@@ -96,32 +96,33 @@ function main() {
     window.addEventListener("keyup", handleKeyUp);
   }
 
-  function destroyGame() {
+  function destroyGame(lost) {
     game = null;
     canvas.remove();
-    buildGameOver();
+    buildGameOver(lost);
+    window.removeEventListener("keyup", handleKeyUp);
   }
 
-  function buildGameOver() {
-    // if () {
+  function buildGameOver(lost) {
+    if (lost) {
 
-    //   gameOverScreen = createHtml(`<div id="game-over">
-    //     <h1 class="main-title">Game Over!</h1>
-    //     <div class="start-over-game">
-    //     <div class="contenido"><img class="guaca-over" src="../images/lost.png"/></div>
-    //     <div class ="contenido">
-    //     <button class="button">Restart</button>
-    //     </div>
-    //     </div>
-    //   </div>`);
+      gameOverScreen = createHtml(`<div id="game-over">
+        <h1 class="main-title">Game Over!</h1>
+        <div class="start-over-game">
+        <div class="contenido"><img class="guaca-over" src="../images/lost.png"/></div>
+        <div class ="contenido">
+        <button class="button">Restart</button>
+        </div>
+        </div>
+      </div>`);
 
-    //   container.appendChild(gameOverScreen);
-    //   restartButton = gameOverScreen.querySelector("button");
-    //   restartButton.addEventListener("click", destroyGameOver);
+      container.appendChild(gameOverScreen);
+      restartButton = gameOverScreen.querySelector("button");
+      restartButton.addEventListener("click", destroyGameOver);
 
-    // } else {
+    } else {
 
-    gameOverScreen = createHtml(`<div id="game-over">
+      gameOverScreen = createHtml(`<div id="game-over">
     <h1 class="main-title">Time is over!</h1>
     <div class="start-over-game">
     <div class="contenido"><img class="guaca-over" src="../images/win.png"/></div>
@@ -131,11 +132,11 @@ function main() {
     </div>
   </div>`);
 
-    container.appendChild(gameOverScreen);
-    restartButton = gameOverScreen.querySelector("button");
-    restartButton.addEventListener("click", destroyGameOver);
+      container.appendChild(gameOverScreen);
+      restartButton = gameOverScreen.querySelector("button");
+      restartButton.addEventListener("click", destroyGameOver);
+    }
   }
-
 
 
 
