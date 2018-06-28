@@ -1,6 +1,6 @@
 "use strict";
 
-function Element(ctx, size, type) {
+function Element(ctx, size, types) {
   this.ctx = ctx;
   this.position = {
     x: 960,
@@ -14,7 +14,7 @@ function Element(ctx, size, type) {
     x: getRandomArbitrary(-2, -5)
   };
 
-  this.type = type
+  this.type = types[Math.floor(Math.random() * 2)]
 
   this.cageImage = new Image();
   this.cageImage.src = "../images/cage.png";

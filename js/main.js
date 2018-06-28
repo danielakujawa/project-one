@@ -9,6 +9,8 @@ function createHtml(html) {
 function main() {
   var splashScreen = null;
   var startGameButton = null;
+  var instructionsLink = null;
+  var instructionsList = null;
   var gameOverScreen = null;
   var restartButton = null;
   var canvas;
@@ -27,11 +29,12 @@ function main() {
         <div class="contenido"><img class="guaca" src="../images/welcome.png"/></div>
         <div class= "contenido">
           <button class="button">Start Game</button>
-          <p><a href="">Instrucciones</a></p>
+          <p><a class="link" href="#">How to play?</a></p>
           <ul class="instructions">
           <li>Move Linda up, down, right or left with the arrow keys!</li>
-          <li>Cages move fast, avoid them! If you get caught 3 times, you will end up in someone's house.</li>
-          <li>Mangos are so delicious, eat them! The more you eat within one minute, the better score you get.</li>
+          <li>You just have one minute!</li>
+          <li>Cages move fast, avoid them! If Linda gets caught 3 times, you lose!</li>
+          <li>Mangos are so delicious, eat them! The more Linda eats, the better score you get!</li>
           </ul>
         </div>
       </div>
@@ -42,6 +45,16 @@ function main() {
     container.appendChild(splashScreen);
     startGameButton = splashScreen.querySelector("button");
     startGameButton.addEventListener("click", destroySplashScreen);
+
+
+    instructionsLink = splashScreen.querySelector("a");
+    instructionsLink.addEventListener("click", hideShowInstructions);
+
+  }
+
+  function hideShowInstructions() {
+    instructionsList = splashScreen.querySelector("ul");
+    instructionsList.classList.toggle('instructions');
   }
 
   function destroySplashScreen() {
@@ -90,20 +103,41 @@ function main() {
   }
 
   function buildGameOver() {
+    // if () {
+
+    //   gameOverScreen = createHtml(`<div id="game-over">
+    //     <h1 class="main-title">Game Over!</h1>
+    //     <div class="start-over-game">
+    //     <div class="contenido"><img class="guaca-over" src="../images/lost.png"/></div>
+    //     <div class ="contenido">
+    //     <button class="button">Restart</button>
+    //     </div>
+    //     </div>
+    //   </div>`);
+
+    //   container.appendChild(gameOverScreen);
+    //   restartButton = gameOverScreen.querySelector("button");
+    //   restartButton.addEventListener("click", destroyGameOver);
+
+    // } else {
+
     gameOverScreen = createHtml(`<div id="game-over">
-        <h1 class="main-title">Game Over</h1>
-        <div class="start-over-game">
-        <div class="contenido"><img class="guaca-over" src="../images/lost.png"/></div>
-        <div class ="contenido">
-        <button class="button">Restart</button>
-        </div>
-        </div>
-      </div>`);
+    <h1 class="main-title">Time is over!</h1>
+    <div class="start-over-game">
+    <div class="contenido"><img class="guaca-over" src="../images/win.png"/></div>
+    <div class ="contenido">
+    <button class="button">Restart</button>
+    </div>
+    </div>
+  </div>`);
 
     container.appendChild(gameOverScreen);
     restartButton = gameOverScreen.querySelector("button");
     restartButton.addEventListener("click", destroyGameOver);
   }
+
+
+
 
   function destroyGameOver() {
     gameOverScreen.remove();

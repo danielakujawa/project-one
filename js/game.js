@@ -24,8 +24,8 @@ Game.prototype.start = function () {
 Game.prototype.createElement = function () {
   var self = this;
   if (self.elements.length < 5) {
-    debugger;
-    var newElement = new Element(self.ctx, self.size, self.position, self.createTypes());
+
+    var newElement = new Element(self.ctx, self.size, self.createTypes());
     self.elements.push(newElement);
   }
 };
@@ -33,10 +33,7 @@ Game.prototype.createElement = function () {
 Game.prototype.createTypes = function () {
   var self = this;
   var types = ["cage", "mango"]
-
-  var random = types[Math.floor(Math.random() * 2)];
-  console.log(random);
-  return random;
+  return types;
 }
 
 Game.prototype.checkIfEnded = function () {
