@@ -25,7 +25,7 @@ Game.prototype.start = function () {
 
 Game.prototype.createElement = function () {
   var self = this;
-  if (self.elements.length < 10) {
+  if (self.elements.length < 8) {
 
     var newElement = new Element(self.ctx, self.size, self.createTypes());
     self.elements.push(newElement);
@@ -43,7 +43,7 @@ Game.prototype.checkIfEnded = function () {
   if (self.player.lives <= 0) {
     self.isEnded = true;
     self.lost = true;
-  } else if (self.counter === 3600) {
+  } else if (self.counter === 300) {
     self.isEnded = true;
     self.lost = false;
   }
@@ -141,9 +141,9 @@ Game.prototype.draw = function () {
 
 Game.prototype.drawMangos = function () {
   var self = this;
-  self.ctx.fillStyle = "darkblue";
-  self.ctx.font = "30px Verdana";
-  self.ctx.fillText("Mangos: " + self.score, 750, 40);
+  self.ctx.fillStyle = "#1c2e58";
+  self.ctx.font = "24px 'Bungee', cursive";
+  self.ctx.fillText("Mangos: " + self.score, 730, 40);
 };
 
 

@@ -62,8 +62,8 @@ Player.prototype.draw = function () {
 
 Player.prototype.drawLives = function () {
   var self = this;
-  self.ctx.fillStyle = "darkblue";
-  self.ctx.font = "30px Verdana";
+  self.ctx.fillStyle = "#1c2e58";
+  self.ctx.font = "24px 'Bungee', cursive";
   self.ctx.fillText("Lives: " + self.lives, 20, 40);
 };
 

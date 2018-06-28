@@ -29,7 +29,7 @@ function main() {
         <div class="contenido"><img class="guaca" src="../images/welcome.png"/></div>
         <div class= "contenido">
           <button class="button">Start Game</button>
-          <p><a class="link" href="#">How to play?</a></p>
+          <p class="how-to-play"><a class="link" href="#">How to play?</a></p>
           <ul class="instructions">
           <li>Move Linda up, down, right or left with the arrow keys!</li>
           <li>You just have one minute!</li>
@@ -128,7 +128,7 @@ function main() {
     <div class="contenido"><img class="guaca-over" src="../images/win.png"/></div>
     <div class ="contenido">
     <button class="button">Restart</button>
-    <p>Linda ate `+ score + ` mangos</p>
+    <p>Linda ate `+ score + ` mangos!</p>
     </div>
     </div>
   </div>`);
