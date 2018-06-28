@@ -14,14 +14,42 @@ function Player(ctx) {
   this.lives = 3;
   this.speed = 60;
 
-  this.image = new Image();
-  this.image.src = "../images/parrot-fly-wing-up.png";
+  this.image1 = new Image();
+  this.image1.src = "../images/parrot-fly-wing-up.png";
+  this.image2 = new Image();
+  this.image2.src = "../images/parrot-fly-wing-down.png";
+
+  this.image1Drawn = false;
+  this.imgVariable = 1;
+
+  this.counter = 0;
 }
 
 Player.prototype.draw = function () {
   var self = this;
+  if (self.imgVariable === 1) {
 
-  self.ctx.drawImage(self.image, self.position.x, self.position.y, self.size.width, self.size.height)
+    self.ctx.drawImage(self.image1, self.position.x, self.position.y, self.size.width, self.size.height)
+    self.image1Drawn = true;
+    self.counter++
+
+  } else if (self.imgVariable === 2) {
+
+    self.ctx.drawImage(self.image2, self.position.x, self.position.y, self.size.width, self.size.height)
+    self.image1Drawn = false;
+    self.counter++
+  }
+  if (self.counter === 12) {
+
+    if (self.image1Drawn === true) {
+      self.imgVariable = 2;
+      self.counter = 0;
+    } else if (self.image1Drawn === false) {
+      self.imgVariable = 1;
+      self.counter = 0;
+    }
+  }
+
 
   // self.ctx.fillStyle = "red";
   // self.ctx.fillRect(

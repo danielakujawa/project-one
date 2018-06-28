@@ -43,7 +43,7 @@ Game.prototype.checkIfEnded = function () {
   if (self.player.lives <= 0) {
     self.isEnded = true;
     self.lost = true;
-  } else if (self.counter === 300) {
+  } else if (self.counter === 3600) {
     self.isEnded = true;
     self.lost = false;
   }
