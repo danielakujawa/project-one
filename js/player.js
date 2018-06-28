@@ -8,8 +8,8 @@ function Player(ctx) {
   };
 
   this.size = {
-    width: 60,
-    height: 60
+    width: 100,
+    height: 100
   };
   this.lives = 3;
   this.speed = 60;
@@ -20,6 +20,7 @@ function Player(ctx) {
 
 Player.prototype.draw = function () {
   var self = this;
+
   self.ctx.drawImage(self.image, self.position.x, self.position.y, self.size.width, self.size.height)
 
   // self.ctx.fillStyle = "red";

@@ -96,14 +96,14 @@ function main() {
     window.addEventListener("keyup", handleKeyUp);
   }
 
-  function destroyGame(lost) {
+  function destroyGame(lost, score) {
     game = null;
     canvas.remove();
-    buildGameOver(lost);
+    buildGameOver(lost, score);
     window.removeEventListener("keyup", handleKeyUp);
   }
 
-  function buildGameOver(lost) {
+  function buildGameOver(lost, score) {
     if (lost) {
 
       gameOverScreen = createHtml(`<div id="game-over">
@@ -128,6 +128,7 @@ function main() {
     <div class="contenido"><img class="guaca-over" src="../images/win.png"/></div>
     <div class ="contenido">
     <button class="button">Restart</button>
+    <p>Linda ate `+ score + ` mangos</p>
     </div>
     </div>
   </div>`);

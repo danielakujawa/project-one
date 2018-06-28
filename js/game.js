@@ -43,7 +43,7 @@ Game.prototype.checkIfEnded = function () {
   if (self.player.lives <= 0) {
     self.isEnded = true;
     self.lost = true;
-  } else if (self.counter === 3600) {
+  } else if (self.counter === 300) {
     self.isEnded = true;
     self.lost = false;
   }
@@ -65,9 +65,9 @@ Game.prototype.checkCollisions = function () {
     var elementTop = element.position.y;
     var elementBottom = element.position.y + element.size.height;
 
-    if (elementLeft <= playerRight && playerRight <= elementRight) {
+    if (playerLeft <= elementRight && elementRight <= playerRight) {
 
-      if (elementTop <= playerBottom && playerBottom <= elementBottom) {
+      if (playerTop <= elementBottom && elementBottom <= playerBottom) {
 
         self.elements.splice(index, 1);
         if (element.type === "cage") {
@@ -76,7 +76,7 @@ Game.prototype.checkCollisions = function () {
           self.score++
         }
 
-      } else if (elementTop <= playerTop && playerTop <= elementBottom) {
+      } else if (playerTop <= elementTop && elementTop <= playerBottom) {
 
         self.elements.splice(index, 1);
         if (element.type === "cage") {
@@ -86,9 +86,9 @@ Game.prototype.checkCollisions = function () {
         }
       }
 
-    } else if (elementLeft <= playerLeft && playerLeft <= elementRight) {
+    } else if (playerLeft <= elementLeft && elementLeft <= playerRight) {
 
-      if (elementTop <= playerBottom && playerBottom <= elementBottom) {
+      if (playerTop <= elementBottom && elementBottom <= playerBottom) {
 
         self.elements.splice(index, 1);
         if (element.type === "cage") {
@@ -97,7 +97,7 @@ Game.prototype.checkCollisions = function () {
           self.score++
         }
 
-      } else if (elementTop <= playerTop && playerTop <= elementBottom) {
+      } else if (playerTop <= elementTop && elementTop <= playerBottom) {
 
         self.elements.splice(index, 1);
         if (element.type === "cage") {
@@ -192,7 +192,7 @@ Game.prototype.doFrame = function () {
     }
     else if (self.isEnded) {
 
-      self.callback(self.lost);
+      self.callback(self.lost, self.score);
     }
   });
 };
