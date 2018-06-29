@@ -31,7 +31,7 @@ Element.prototype.draw = function () {
     self.ctx.drawImage(self.mangoImage, self.position.x, self.position.y, self.size.width, self.size.height)
   }
 
-  //  self.ctx.fillStyle = "black";
+  //   self.ctx.fillStyle = "black";
   //  self.ctx.fillRect(
   //   self.position.x,
   //   self.position.y,
