@@ -13,6 +13,9 @@ function Game(ctx, canvas, cb) {
   this.counter = 0;
   this.score = 0;
   this.lost = null;
+  this.cageAudio = new Audio("../mp3/grito.mp3");
+  this.backgroundAudio = new Audio("../mp3/background.mp3");
+  this.mordiscoAudio = new Audio("../mp3/mordisco.mp3")
   this.start();
 }
 
@@ -43,7 +46,7 @@ Game.prototype.checkIfEnded = function () {
   if (self.player.lives <= 0) {
     self.isEnded = true;
     self.lost = true;
-  } else if (self.counter === 300) {
+  } else if (self.counter === 3600) {
     self.isEnded = true;
     self.lost = false;
   }
@@ -72,8 +75,10 @@ Game.prototype.checkCollisions = function () {
         self.elements.splice(index, 1);
         if (element.type === "cage") {
           self.player.lives -= 1;
+          self.cageAudio.play();
         } else {
           self.score++
+          self.mordiscoAudio.play();
         }
 
       } else if (playerTop <= elementTop && elementTop <= playerBottom) {
@@ -81,8 +86,10 @@ Game.prototype.checkCollisions = function () {
         self.elements.splice(index, 1);
         if (element.type === "cage") {
           self.player.lives -= 1;
+          self.cageAudio.play();
         } else {
           self.score++
+          self.mordiscoAudio.play();
         }
       }
 
@@ -93,8 +100,10 @@ Game.prototype.checkCollisions = function () {
         self.elements.splice(index, 1);
         if (element.type === "cage") {
           self.player.lives -= 1;
+          self.cageAudio.play();
         } else {
           self.score++
+          self.mordiscoAudio.play();
         }
 
       } else if (playerTop <= elementTop && elementTop <= playerBottom) {
@@ -102,8 +111,10 @@ Game.prototype.checkCollisions = function () {
         self.elements.splice(index, 1);
         if (element.type === "cage") {
           self.player.lives -= 1;
+          self.cageAudio.play();
         } else {
           self.score++
+          self.mordiscoAudio.play();
         }
 
       }

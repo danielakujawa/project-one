@@ -34,7 +34,7 @@ function main() {
           <li>Move Linda up, down, right or left with the arrow keys!</li>
           <li>You just have one minute!</li>
           <li>Cages move fast, avoid them! If Linda gets caught 3 times, you lose!</li>
-          <li>Mangos are so delicious, eat them! The more Linda eats, the better score you get!</li>
+          <li>Mangos are delicious, eat them! The more Linda eats, the higher your score will be!</li>
           </ul>
         </div>
       </div>
@@ -94,9 +94,11 @@ function main() {
     var canvasCtx = canvas.getContext("2d");
     game = new Game(canvasCtx, canvas, destroyGame);
     window.addEventListener("keyup", handleKeyUp);
+    game.backgroundAudio.play();
   }
 
   function destroyGame(lost, score) {
+    game.backgroundAudio.pause();
     game = null;
     canvas.remove();
     buildGameOver(lost, score);
@@ -107,13 +109,13 @@ function main() {
     if (lost) {
 
       gameOverScreen = createHtml(`<div id="game-over">
-        <h1 class="main-title">Game Over!</h1>
-        <div class="start-over-game">
-        <div class="contenido"><img class="guaca-over" src="../images/lost.png"/></div>
-        <div class ="contenido">
-        <button class="button">Restart</button>
-        </div>
-        </div>
+      <h1 class="main-title">Game Over!</h1>
+      <div class="start-over-game">
+      <div class="contenido"><img class="guaca-over" src="../images/lost.png"/></div>
+      <div class ="contenido">
+      <button class="button">Restart</button>
+      </div>
+      </div>
       </div>`);
 
       container.appendChild(gameOverScreen);
@@ -123,15 +125,15 @@ function main() {
     } else {
 
       gameOverScreen = createHtml(`<div id="game-over">
-    <h1 class="main-title">Time is over!</h1>
-    <div class="start-over-game">
-    <div class="contenido"><img class="guaca-over" src="../images/win.png"/></div>
-    <div class ="contenido">
-    <button class="button">Restart</button>
-    <p>Linda ate `+ score + ` mangos!</p>
-    </div>
-    </div>
-  </div>`);
+      <h1 class="main-title">Time is over!</h1>
+      <div class="start-over-game">
+      <div class="contenido"><img class="guaca-over" src="../images/win.png"/></div>
+      <div class ="contenido">
+      <button class="button">Restart</button>
+      <p>Linda ate `+ score + ` mangos!</p>
+      </div>
+      </div>
+      </div>`);
 
       container.appendChild(gameOverScreen);
       restartButton = gameOverScreen.querySelector("button");
