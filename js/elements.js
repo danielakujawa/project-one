@@ -17,10 +17,10 @@ function Element(ctx, size, types) {
   this.type = types[Math.floor(Math.random() * 2)]
 
   this.cageImage = new Image();
-  this.cageImage.src = "../images/cage.png";
+  this.cageImage.src = "images/cage.png";
 
   this.mangoImage = new Image();
-  this.mangoImage.src = "../images/mango.png";
+  this.mangoImage.src = "images/mango.png";
 }
 
 Element.prototype.draw = function () {
@@ -32,7 +32,7 @@ Element.prototype.draw = function () {
   }
 
   //   self.ctx.fillStyle = "black";
-  //   self.ctx.fillRect(
+  //  self.ctx.fillRect(
   //   self.position.x,
   //   self.position.y,
   //   self.size.width,

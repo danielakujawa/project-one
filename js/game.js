@@ -13,9 +13,9 @@ function Game(ctx, canvas, cb) {
   this.counter = 0;
   this.score = 0;
   this.lost = null;
-  this.cageAudio = new Audio("../mp3/grito.mp3");
-  this.backgroundAudio = new Audio("../mp3/background.mp3");
-  this.mordiscoAudio = new Audio("../mp3/mordisco.mp3")
+  this.cageAudio = new Audio("mp3/grito.mp3");
+  this.backgroundAudio = new Audio("mp3/background.mp3");
+  this.mordiscoAudio = new Audio("mp3/mordisco.mp3")
   this.start();
 }
 
@@ -177,7 +177,7 @@ Game.prototype.checkElementsOffScreen = function () {
 
 
 Game.prototype.doFrame = function () {
-  var self = this; //  change everything to self in the methods
+  var self = this; // change everything to self in the methods
   self.counter++;
   self.checkIfEnded();
   self.checkCollisions();

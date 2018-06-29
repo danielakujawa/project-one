@@ -26,7 +26,7 @@ function main() {
     splashScreen = createHtml(`<div id="intro">
       <h1 class="main-title">GuacaGame</h1>
       <div class="start-over-game">
-        <div class="contenido"><img class="guaca" src="../images/welcome.png"/></div>
+        <div class="contenido"><img class="guaca" src="images/welcome.png"/></div>
         <div class= "contenido">
           <button class="button">Start Game</button>
           <p class="how-to-play"><a class="link" href="#">How to play?</a></p>
@@ -72,7 +72,7 @@ function main() {
   }
 
 
-  //-- --- @todo---This should be in game.js
+  //----- @todo---This should be in game.js
 
   function handleKeyUp(event) {
     var self = this;
@@ -111,7 +111,7 @@ function main() {
       gameOverScreen = createHtml(`<div id="game-over">
       <h1 class="main-title">Game Over!</h1>
       <div class="start-over-game">
-      <div class="contenido"><img class="guaca-over" src="../images/lost.png"/></div>
+      <div class="contenido"><img class="guaca-over" src="images/lost.png"/></div>
       <div class ="contenido">
       <button class="button">Restart</button>
       </div>
@@ -127,7 +127,7 @@ function main() {
       gameOverScreen = createHtml(`<div id="game-over">
       <h1 class="main-title">Time is over!</h1>
       <div class="start-over-game">
-      <div class="contenido"><img class="guaca-over" src="../images/win.png"/></div>
+      <div class="contenido"><img class="guaca-over" src="images/win.png"/></div>
       <div class ="contenido">
       <button class="button">Restart</button>
       <p>Linda ate `+ score + ` mangos!</p>

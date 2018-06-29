@@ -15,9 +15,9 @@ function Player(ctx) {
   this.speed = 60;
 
   this.image1 = new Image();
-  this.image1.src = "../images/parrot-fly-wing-up.png";
+  this.image1.src = "images/parrot-fly-wing-up.png";
   this.image2 = new Image();
-  this.image2.src = "../images/parrot-fly-wing-down.png";
+  this.image2.src = "images/parrot-fly-wing-down.png";
 
   this.image1Drawn = false;
   this.imgVariable = 1;
@@ -55,7 +55,7 @@ Player.prototype.draw = function () {
   //  self.ctx.fillRect(
   //   self.position.x,
   //   self.position.y,
-  //    self.size.width,
+  //   self.size.width,
   //   self.size.height
   // );
 };
