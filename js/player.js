@@ -55,7 +55,7 @@ Player.prototype.draw = function () {
   //  self.ctx.fillRect(
   //   self.position.x,
   //   self.position.y,
-  //   self.size.width,
+  //    self.size.width,
   //   self.size.height
   // );
 };
