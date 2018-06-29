@@ -32,7 +32,7 @@ Element.prototype.draw = function () {
   }
 
   //   self.ctx.fillStyle = "black";
-  //  self.ctx.fillRect(
+  //   self.ctx.fillRect(
   //   self.position.x,
   //   self.position.y,
   //   self.size.width,

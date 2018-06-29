@@ -177,7 +177,7 @@ Game.prototype.checkElementsOffScreen = function () {
 
 
 Game.prototype.doFrame = function () {
-  var self = this; // change everything to self in the methods
+  var self = this; //  change everything to self in the methods
   self.counter++;
   self.checkIfEnded();
   self.checkCollisions();

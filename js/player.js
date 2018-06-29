@@ -52,7 +52,7 @@ Player.prototype.draw = function () {
 
 
   // self.ctx.fillStyle = "red";
-  // self.ctx.fillRect(
+  //  self.ctx.fillRect(
   //   self.position.x,
   //   self.position.y,
   //   self.size.width,

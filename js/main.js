@@ -72,7 +72,7 @@ function main() {
   }
 
 
-  //----- @todo---This should be in game.js
+  //-- --- @todo---This should be in game.js
 
   function handleKeyUp(event) {
     var self = this;
