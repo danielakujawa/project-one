@@ -28,7 +28,7 @@ Game.prototype.start = function () {
 
 Game.prototype.createElement = function () {
   var self = this;
-  if (self.elements.length < 8) {
+  if (self.elements.length < 5) {
 
     var newElement = new Element(self.ctx, self.size, self.createTypes());
     self.elements.push(newElement);

@@ -11,7 +11,7 @@ function Element(ctx, size, types) {
     height: 60
   };
   this.speed = {
-    x: getRandomArbitrary(-2, -5)
+    x: getRandomArbitrary(-1, -4)
   };
 
   this.type = types[Math.floor(Math.random() * 2)]
